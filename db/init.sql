@@ -1,3 +1,5 @@
+SET datestyle = "ISO, DMY";
+
 create table pais (
 	idPais serial primary key,
 	nomePais varchar(40) NOT NULL,
@@ -186,16 +188,16 @@ INSERT INTO public.participantes(nome, endereco, telefone, idpais) VALUES ('Bob 
 INSERT INTO public.participantes(nome, endereco, telefone, idpais) VALUES ('Boris Sparski', 'Rathausstrasse 90, 90706 Fürth', 0911779168, 6);
 INSERT INTO public.participantes(nome, endereco, telefone, idpais) VALUES ('Garry Kasparov', '36, cours Franklin Roosevelt, 13009 MARSEILLE', 0444847898, 2);
 
-INSERT INTO public.hotel(nomehotel, telefone, endereco) VALUES ('Hilton', 5133533860, '4013 Gnatty Creek Road, Huntington, NY 11743');
-INSERT INTO public.hotel(nomehotel, telefone, endereco) VALUES ('Matsoud Plaza', 202920054, '4735 5th Avenue, Berwyn, AB T0H 0E0');
-INSERT INTO public.hotel(nomehotel, telefone, endereco) VALUES ('Ibis Consolação', 1125869523, 'Avenida Paulista 2355, Bela Vista, 01311300 SAO PAULO');
+INSERT INTO public.hotel(nomeHotel, telefone, endereco) VALUES ('Hilton', 5133533860, '4013 Gnatty Creek Road, Huntington, NY 11743');
+INSERT INTO public.hotel(nomeHotel, telefone, endereco) VALUES ('Matsoud Plaza', 202920054, '4735 5th Avenue, Berwyn, AB T0H 0E0');
+INSERT INTO public.hotel(nomeHotel, telefone, endereco) VALUES ('Ibis Consolação', 1125869523, 'Avenida Paulista 2355, Bela Vista, 01311300 SAO PAULO');
 
-INSERT INTO public.salao(nomehotel, capacidade) VALUES ('Hilton', 100);
-INSERT INTO public.salao(nomehotel, capacidade) VALUES ('Hilton', 120);
-INSERT INTO public.salao(nomehotel, capacidade) VALUES ('Matsoud Plaza', 95);
-INSERT INTO public.salao(nomehotel, capacidade) VALUES ('Matsoud Plaza', 110);
-INSERT INTO public.salao(nomehotel, capacidade) VALUES ('Ibis Consolação', 200);
-INSERT INTO public.salao(nomehotel, capacidade) VALUES ('Ibis Consolação', 340);
+INSERT INTO public.salao(nomeHotel, capacidade) VALUES ('Hilton', 100);
+INSERT INTO public.salao(nomeHotel, capacidade) VALUES ('Hilton', 120);
+INSERT INTO public.salao(nomeHotel, capacidade) VALUES ('Matsoud Plaza', 95);
+INSERT INTO public.salao(nomeHotel, capacidade) VALUES ('Matsoud Plaza', 110);
+INSERT INTO public.salao(nomeHotel, capacidade) VALUES ('Ibis Consolação', 200);
+INSERT INTO public.salao(nomeHotel, capacidade) VALUES ('Ibis Consolação', 340);
 
 INSERT INTO public.salao_meios(idsalao, meios) VALUES (1, 'Televisão');
 INSERT INTO public.salao_meios(idsalao, meios) VALUES (1, 'Projetor');
@@ -278,50 +280,50 @@ INSERT INTO public.jogador(numassociado, nivel) VALUES (39, 'iniciante');
 INSERT INTO public.jogador(numassociado, nivel) VALUES (40, 'mediano');
 INSERT INTO public.jogador(numassociado, nivel) VALUES (42, 'iniciante');
 
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 1, '01/06/2023', '08/06/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 2, '02/06/2023', '09/06/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 3, '01/06/2023', '10/06/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 4, '03/06/2023', '10/06/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 5, '02/06/2023', '10/06/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 6, '04/06/2023', '10/06/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 7, '01/06/2023', '10/06/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 8, '01/06/2023', '11/06/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 9, '02/06/2023', '08/06/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 10, '02/06/2023', '08/06/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 11, '01/06/2023', '07/06/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 12, '03/06/2023', '07/06/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 13, '01/06/2023', '07/06/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 14, '02/06/2023', '09/06/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 1, '01/06/2023', '08/06/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 2, '02/06/2023', '09/06/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 3, '01/06/2023', '10/06/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 4, '03/06/2023', '10/06/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 5, '02/06/2023', '10/06/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 6, '04/06/2023', '10/06/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 7, '01/06/2023', '10/06/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 8, '01/06/2023', '11/06/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 9, '02/06/2023', '08/06/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 10, '02/06/2023', '08/06/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 11, '01/06/2023', '07/06/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 12, '03/06/2023', '07/06/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 13, '01/06/2023', '07/06/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Ibis Consolação', 14, '02/06/2023', '09/06/2023');
 
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 15, '10/09/2023', '20/09/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 16, '11/09/2023', '19/09/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 17, '10/09/2023', '20/09/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 18, '10/09/2023', '20/09/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 19, '09/09/2023', '21/09/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 20, '09/09/2023', '21/09/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 21, '08/09/2023', '21/09/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 22, '11/09/2023', '22/09/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 23, '12/09/2023', '17/09/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 24, '11/09/2023', '18/09/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 25, '10/09/2023', '18/09/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 26, '11/09/2023', '20/09/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 15, '10/09/2023', '20/09/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 16, '11/09/2023', '19/09/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 17, '10/09/2023', '20/09/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 18, '10/09/2023', '20/09/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 19, '09/09/2023', '21/09/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 20, '09/09/2023', '21/09/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 21, '08/09/2023', '21/09/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 22, '11/09/2023', '22/09/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 23, '12/09/2023', '17/09/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 24, '11/09/2023', '18/09/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 25, '10/09/2023', '18/09/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Matsoud Plaza', 26, '11/09/2023', '20/09/2023');
 
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 27, '18/01/2023', '25/01/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 28, '18/01/2023', '26/01/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 29, '20/01/2023', '26/01/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 30, '21/01/2023', '26/01/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 31, '18/01/2023', '26/01/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 32, '18/01/2023', '24/01/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 33, '17/01/2023', '25/01/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 34, '17/01/2023', '25/01/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 35, '17/01/2023', '22/01/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 36, '18/01/2023', '26/01/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 37, '19/01/2023', '26/01/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 38, '18/01/2023', '25/01/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 39, '19/01/2023', '24/01/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 40, '19/01/2023', '23/01/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 41, '20/01/2023', '25/01/2023');
-INSERT INTO public.acomodam_se(nomehotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 42, '21/01/2023', '25/01/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 27, '18/01/2023', '25/01/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 28, '18/01/2023', '26/01/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 29, '20/01/2023', '26/01/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 30, '21/01/2023', '26/01/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 31, '18/01/2023', '26/01/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 32, '18/01/2023', '24/01/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 33, '17/01/2023', '25/01/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 34, '17/01/2023', '25/01/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 35, '17/01/2023', '22/01/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 36, '18/01/2023', '26/01/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 37, '19/01/2023', '26/01/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 38, '18/01/2023', '25/01/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 39, '19/01/2023', '24/01/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 40, '19/01/2023', '23/01/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 41, '20/01/2023', '25/01/2023');
+INSERT INTO public.acomodam_se(nomeHotel, numassociado, dataentrada, datasaida) VALUES ('Hilton', 42, '21/01/2023', '25/01/2023');
 
 INSERT INTO public.jogo(numarbitro, idsalao, ingressos, datajogo) VALUES (3, 5, 90, '04/06/2023');
 INSERT INTO public.jogo(numarbitro, idsalao, ingressos, datajogo) VALUES (3, 6, 100, '05/06/2023');

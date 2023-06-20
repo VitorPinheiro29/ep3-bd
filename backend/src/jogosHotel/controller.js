@@ -3,12 +3,10 @@ const connect = require('../../utils/db');
 async function getJogosHotel(req, res) {
   const client = await connect();
 
-
-  const hotelNome = 'Hilton'; // Valor selecionado no frontend
-
-  const query = 'SELECT DISTINCT j.idJogo, j.numarbitro, j.idsalao, j.ingressos, j.datajogo FROM jogo j INNER JOIN salao s ON j.idsalao = s.idsalao WHERE s.nomehotel = $1 ORDER BY datajogo;';
+  const query = 'SELECT DISTINCT j.idjogo, j.numarbitro, j.idsalao, j.ingressos, j.datajogo FROM jogo j INNER JOIN salao s ON j.idSalao = s.idsalao';
+  const nomeHotel = 'Hilton'; // Valor dinâmico para o parâmetro $1
   
-  const result = await client.query(query, [hotelNome]);
+  const result = await client.query(query);
   
   res.send(result.rows);
 }

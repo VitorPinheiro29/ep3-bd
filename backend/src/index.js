@@ -19,6 +19,10 @@ app.use('/jogosArbitro', require('./jogosArbitro/routes'));
 
 app.use('/programacaoJogos', require('./programacaoJogos/routes'));
 
+app.use('/movimentosJogos', require('./movimentosPorJogos/router'));
+
+app.use('/jogadoresPais', require('./jogadoresPorPais/router'));
+
 app.get('/', (req, res) => {
   res.send({
     message: 'Hello World'

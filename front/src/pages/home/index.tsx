@@ -1,95 +1,100 @@
-import React, { useState } from "react";
-
-import bestPlace from "../../images/best_place.svg";
+import React, { useEffect, useState } from "react";
 
 import api from "../../api";
 
 import {
   Container,
-  NavBar,
-  Banner,
-  BannerApresentation,
-  ApresentationTitle,
-  ApresentationDescription,
-  BannerImage,
   GamesContainer,
   GamesCardContainer,
-  GamesCard,
   InfoContainer,
   InfoList,
+  GraficosContainer,
 } from "./styles";
 import PlayerTopic from "../../components/playerTopic";
-import axios from "axios";
+import Grafico from "../../components/grafico";
+import NavBar from "../../components/navbar";
+import Banner from "../../components/banner";
+import GameCardComponent from "../../components/gameCard";
 
 export default function Home() {
-  // const data = api.get('/getHotel');
+  const [championships, setChampionships] = React.useState<any>([]);
+  const [players, setPlayers] = React.useState<any>([]);
+  const [hotel, setHotels] = React.useState<any>([]);
+  const [referee, setReferees] = React.useState<any>([]);
 
-  // data.then((resp) => console.log("uhul", resp.data))
+  useEffect(() => {
+    const getChampionships = async () => {
+      const data = await api.get("/programacaoJogos");
 
-  axios.get("http://localhost:3333/hotel").then((response) => {
-    console.log(response.data);
-  });
+      const grupos: any[] = [];
+      const idsJogos: number[] = [];
+    
+      for (const jogo of data.data) {
+        if (!idsJogos.includes(jogo.idjogo)) {
+          idsJogos.push(jogo.idjogo);
+          grupos.push({
+            ...jogo,
+            jogador: [jogo.jogador],
+            arbitro: [jogo.arbitro]
+          });
+        } else {
+          const index = grupos.findIndex(item => item.idjogo === jogo.idjogo);
+          if (!grupos[index].jogador.includes(jogo.jogador)) {
+            grupos[index].jogador.push(jogo.jogador);
+          }
+          if (!grupos[index].arbitro.includes(jogo.arbitro)) {
+            grupos[index].arbitro.push(jogo.arbitro);
+          }
+        }
+      }
+
+      console.log('in your heaaaad', grupos);
+      setChampionships(grupos);
+
+      console.log('championships', grupos);
+    };
+
+    const getPlayers = async () => {
+      const data = await api.get("/jogador");
+      setPlayers(data.data);
+    };
+
+    const getHotels = async () => {
+      const data = await api.get("/hotel");
+      setHotels(data.data);
+    };
+
+    const getReferees = async () => {
+      const data = await api.get("/arbitro");
+      setReferees(data.data);
+    };
+
+    getChampionships().catch((err) => console.log(err));
+    getPlayers().catch((err) => console.log(err));
+    getHotels().catch((err) => console.log(err));
+    getReferees().catch((err) => console.log(err));
+  }, []);
 
   return (
     <Container>
-      <NavBar>
-        <h1>Sampa Chess</h1>
-      </NavBar>
-      <Banner>
-        <BannerApresentation>
-          <ApresentationTitle>Sampa Chess</ApresentationTitle>
-          <ApresentationDescription>
-            Confira a programação e os detalhes do maior campeonato
-            internacional de xadrez do Brasil
-          </ApresentationDescription>
-        </BannerApresentation>
-        <BannerImage>
-          <img src={bestPlace} />
-        </BannerImage>
-      </Banner>
+      <NavBar></NavBar>
+      <Banner></Banner>
       <GamesContainer>
-        <h1>Jogos</h1>
+        <h1>Campeonatos</h1>
         <h2>Conheça todos os jogos do campeonato</h2>
         <GamesCardContainer>
-          <GamesCard>
-            <h1>Jogo 1</h1>
-            <h3>♕ Jogadores:</h3>
-            <h3>♕ Árbitros:</h3>
-            <h3>♕ Lugar:</h3>
-            <h3>♕ Horário:</h3>
-          </GamesCard>
-          <GamesCard>
-            <h1>Jogo 2</h1>
-            <h3>♕ Jogadores:</h3>
-            <h3>♕ Árbitros:</h3>
-            <h3>♕ Lugar:</h3>
-            <h3>♕ Horário:</h3>
-          </GamesCard>
-          <GamesCard>
-            <h1>Jogo 1</h1>
-            <h3>♕ Jogadores:</h3>
-            <h3>♕ Árbitros:</h3>
-            <h3>♕ Lugar:</h3>
-            <h3>♕ Horário:</h3>
-          </GamesCard>
-          <GamesCard>
-            <h1>Jogo 1</h1>
-            <h3>♕ Jogadores:</h3>
-            <h3>♕ Árbitros:</h3>
-            <h3>♕ Lugar:</h3>
-            <h3>♕ Horário:</h3>
-          </GamesCard>
+          {championships.map((championship: any) => {
+            return <GameCardComponent key={championship.idjogo} value={championship}></GameCardComponent>
+          })}
         </GamesCardContainer>
       </GamesContainer>
       <InfoContainer>
         <h1>Jogadores</h1>
         <h2>Clique em um jogador para ver seus jogos programados</h2>
         <InfoList>
-          <PlayerTopic>Armando</PlayerTopic>
-          <PlayerTopic>Armando</PlayerTopic>
-          <PlayerTopic>Armando</PlayerTopic>
-          <PlayerTopic>Armando</PlayerTopic>
-          <PlayerTopic>Armando</PlayerTopic>
+          {players.map((resp: any) => (
+            <PlayerTopic key={resp.nome}>{resp.nome}</PlayerTopic>
+          ))}
         </InfoList>
       </InfoContainer>
 
@@ -97,11 +102,9 @@ export default function Home() {
         <h1>Hotéis</h1>
         <h2>Clique em um hotel para ver seus jogos programados</h2>
         <InfoList>
-          <PlayerTopic>Armando</PlayerTopic>
-          <PlayerTopic>Armando</PlayerTopic>
-          <PlayerTopic>Armando</PlayerTopic>
-          <PlayerTopic>Armando</PlayerTopic>
-          <PlayerTopic>Armando</PlayerTopic>
+          {hotel.map((resp: any) => (
+            <PlayerTopic key={resp.nomehotel}>{resp.nomehotel}</PlayerTopic>
+          ))}
         </InfoList>
       </InfoContainer>
 
@@ -109,13 +112,16 @@ export default function Home() {
         <h1>Árbitros</h1>
         <h2>Clique em um árbitro para ver seus jogos programados</h2>
         <InfoList>
-          <PlayerTopic>Armando</PlayerTopic>
-          <PlayerTopic>Armando</PlayerTopic>
-          <PlayerTopic>Armando</PlayerTopic>
-          <PlayerTopic>Armando</PlayerTopic>
-          <PlayerTopic>Armando</PlayerTopic>
+          {referee.map((resp: any) => (
+            <PlayerTopic key={resp.nome}>{resp.nome}</PlayerTopic>
+          ))}
         </InfoList>
       </InfoContainer>
+
+      <GraficosContainer>
+        <Grafico value={"movement"}></Grafico>
+        <Grafico value={"players"}></Grafico>
+      </GraficosContainer>
     </Container>
   );
 }

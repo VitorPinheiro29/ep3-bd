@@ -1,8 +1,12 @@
-const connect = require('../../utils/db');
+const connect = require("../../utils/db");
 
 async function getArbitro(req, res) {
   const client = await connect();
-  const result = await client.query('SELECT  nome, participantes.numassociado, idpais FROM participantes inner join campeonato on campeonato.numassociado = participantes.numassociado where tipoparticipante = "árbitro"');
+  const result =
+    await client.query(`SELECT nome, participantes.numassociado, idpais
+    FROM participantes
+    INNER JOIN campeonato ON campeonato.numassociado = participantes.numassociado
+    WHERE tipoparticipante = 'árbitro'`);
   res.send(result.rows);
 }
 
