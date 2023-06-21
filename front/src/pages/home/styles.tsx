@@ -44,6 +44,8 @@ export const InfoContainer = styled.section`
   align-items: center;
 
   margin-top: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
 
   border-top: 1px solid black;
 `;
@@ -65,7 +67,12 @@ export const GraficosContainer = styled.section`
   justify-content: space-between;
   align-items: center;
   
-  width: 70%;
+  width: 80%;
   margin-bottom: 50px;
-  margin-left: 15%;
+  padding-left: 15%;
+  padding-top: 5%;
+  margin-right: 15%;
+  margin-left: 40px;
+
+  border-top: 1px solid black;
 `;

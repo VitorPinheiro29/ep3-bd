@@ -6,9 +6,9 @@ export default function MainRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/players" element={<DetailsPage />} />
-      <Route path="/hotels" element={<DetailsPage />} />
-      <Route path="/referees" element={<DetailsPage />} />
+      <Route path="/jogosJogador" element={<DetailsPage />} />
+      <Route path="/jogosHotel" element={<DetailsPage />} />
+      <Route path="/jogosArbitro" element={<DetailsPage />} />
     </Routes>
   );
 }

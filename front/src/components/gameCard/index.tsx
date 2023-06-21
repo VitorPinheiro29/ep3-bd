@@ -23,11 +23,11 @@ export default function GameCardComponent(props: any) {
       <CardContent>
         <ItemsContainer>
           ♕ Jogadores
-          {props.value.jogador.map((player: any) => <Items>♗ {player}</Items>)}
+          {props.value.jogador.map((player: any) => <Items key={player}>♗ {player}</Items>)}
         </ItemsContainer>
         <ItemsContainer>
           ♕ Árbitros
-          {props.value.arbitro.map((referee: any) => <Items>♗ {referee}</Items>)}
+          {props.value.arbitro.map((referee: any) => <Items key={referee}>♗ {referee}</Items>)}
         </ItemsContainer>
         <ItemsContainer>
           ♕ Lugar

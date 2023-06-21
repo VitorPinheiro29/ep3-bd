@@ -7,7 +7,7 @@ export const GamesCard = styled.div`
   width: 25%;
   height: 100%;
   margin-bottom: 40px;
-  margin-left: 6%;
+  margin-left: 0%;
 
   border-radius: 10px;
   border: 1px solid black;

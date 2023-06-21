@@ -17,7 +17,7 @@ export default function Banner() {
           <ApresentationTitle>Sampa Chess</ApresentationTitle>
           <ApresentationDescription>
             Confira a programação e os detalhes do maior campeonato
-            internacional de xadrez do Brasil
+            internacional de xadrez no Brasil
           </ApresentationDescription>
         </BannerApresentation>
         <BannerImage>

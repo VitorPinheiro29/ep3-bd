@@ -10,11 +10,14 @@ import {
   InfoList,
   GraficosContainer,
 } from "./styles";
+
 import PlayerTopic from "../../components/playerTopic";
 import Grafico from "../../components/grafico";
 import NavBar from "../../components/navbar";
 import Banner from "../../components/banner";
 import GameCardComponent from "../../components/gameCard";
+
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [championships, setChampionships] = React.useState<any>([]);
@@ -28,17 +31,17 @@ export default function Home() {
 
       const grupos: any[] = [];
       const idsJogos: number[] = [];
-    
+
       for (const jogo of data.data) {
         if (!idsJogos.includes(jogo.idjogo)) {
           idsJogos.push(jogo.idjogo);
           grupos.push({
             ...jogo,
             jogador: [jogo.jogador],
-            arbitro: [jogo.arbitro]
+            arbitro: [jogo.arbitro],
           });
         } else {
-          const index = grupos.findIndex(item => item.idjogo === jogo.idjogo);
+          const index = grupos.findIndex((item) => item.idjogo === jogo.idjogo);
           if (!grupos[index].jogador.includes(jogo.jogador)) {
             grupos[index].jogador.push(jogo.jogador);
           }
@@ -48,10 +51,7 @@ export default function Home() {
         }
       }
 
-      console.log('in your heaaaad', grupos);
       setChampionships(grupos);
-
-      console.log('championships', grupos);
     };
 
     const getPlayers = async () => {
@@ -83,9 +83,12 @@ export default function Home() {
         <h1>Campeonatos</h1>
         <h2>Conheça todos os jogos do campeonato</h2>
         <GamesCardContainer>
-          {championships.map((championship: any) => {
-            return <GameCardComponent key={championship.idjogo} value={championship}></GameCardComponent>
-          })}
+          {championships.map((championship: any) => (
+            <GameCardComponent
+              key={championship.idjogo}
+              value={championship}
+            ></GameCardComponent>
+          ))}
         </GamesCardContainer>
       </GamesContainer>
       <InfoContainer>
@@ -93,7 +96,11 @@ export default function Home() {
         <h2>Clique em um jogador para ver seus jogos programados</h2>
         <InfoList>
           {players.map((resp: any) => (
-            <PlayerTopic key={resp.nome}>{resp.nome}</PlayerTopic>
+            <PlayerTopic key={resp.nome}>
+              <Link to={`/jogosJogador?nomeJogador=${resp.nome}`}>
+                {resp.nome}
+              </Link>
+            </PlayerTopic>
           ))}
         </InfoList>
       </InfoContainer>
@@ -103,7 +110,11 @@ export default function Home() {
         <h2>Clique em um hotel para ver seus jogos programados</h2>
         <InfoList>
           {hotel.map((resp: any) => (
-            <PlayerTopic key={resp.nomehotel}>{resp.nomehotel}</PlayerTopic>
+            <PlayerTopic key={resp.nomehotel}>
+              <Link to={`/jogosHotel?nomeHotel=${resp.nomehotel}`}>
+                {resp.nomehotel}
+              </Link>
+            </PlayerTopic>
           ))}
         </InfoList>
       </InfoContainer>
@@ -113,7 +124,11 @@ export default function Home() {
         <h2>Clique em um árbitro para ver seus jogos programados</h2>
         <InfoList>
           {referee.map((resp: any) => (
-            <PlayerTopic key={resp.nome}>{resp.nome}</PlayerTopic>
+            <PlayerTopic key={resp.nome}>
+              <Link to={`/jogosArbitro?nomeArbitro=${resp.nome}`}>
+                {resp.nome}
+              </Link>
+            </PlayerTopic>
           ))}
         </InfoList>
       </InfoContainer>
